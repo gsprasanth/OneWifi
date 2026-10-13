@@ -259,6 +259,8 @@ webconfig_error_t decode_mac_filter_subdoc(webconfig_t *config, webconfig_subdoc
             continue;
         }
         rdk_vap_info = &params->radios[radio_index].vaps.rdk_vap_array[vap_array_index];
+	wifi_util_info_print(WIFI_WEBCONFIG, "%s:%d: Before NULL VAP address: %p\n",
+        __func__, __LINE__, (void *)rdk_vap_info->acl_map);
         rdk_vap_info->acl_map = NULL;
         rdk_vap_info->vap_index = convert_vap_name_to_index(&params->hal_cap.wifi_prop, name);
         if ((int)rdk_vap_info->vap_index < 0) {
